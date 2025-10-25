@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <% if (error && error.length > 0) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= error[0] %>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %> <% if (success && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= success[0] %>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %>
+
+  <div class="container">
+    <header class="header">
+      <h1>All Listings</h1>
+    </header>
+
+    <div class="listings-grid">
+      <% for (let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="listing-card">
+          <img src="<%= listing.image.url %>" alt="listing-img" />
+          <div class="listing-body">
+            <h2><%= listing.title %></h2>
+            <p class="price">
+              ₹<%= listing.price.toLocaleString("en-IN") %> / night
+            </p>
+          </div>
+        </div>
+      </a>
+      <% } %>
+    </div>
+  </div>
+</body>

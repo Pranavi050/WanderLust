@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-signup-box">
+      <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error[0] %>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
+      <h1 class="auth-title">Login your account</h1>
+      <!-- Added needs-validation and novalidate -->
+      <form
+        action="/login"
+        method="POST"
+        class="auth-form needs-validation"
+        novalidate
+      >
+        <div class="auth-field">
+          <label class="auth-label" for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            class="auth-input"
+            required
+          />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create a password"
+            class="auth-input"
+            required
+            minlength="1"
+          />
+        </div>
+
+        <button type="submit" class="auth-btn">Login</button>
+
+        <p class="auth-link-box">
+          Don't have an account?
+          <a href="/signup" class="auth-link">Signup here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>

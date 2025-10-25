@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md bg-white shadow-sm sticky-top py-3">
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center"
+  >
+    <!-- Left Logo -->
+    <a class="navbar-brand fw-bold text-danger fs-4" href="/">
+      <i class="fa-solid fa-compass"></i> WanderLust
+    </a>
+
+    <!-- Center Search Bar -->
+    <form
+      class="d-none d-md-flex align-items-center border rounded-pill px-3 py-1 shadow-sm"
+      style="min-width: 300px"
+    >
+      <input
+        class="form-control border-0 shadow-none"
+        type="search"
+        placeholder="Start your search"
+        aria-label="Search"
+      />
+      <button class="btn btn-sm btn-danger rounded-pill px-3" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+
+    <!-- Right Menu -->
+    <div class="d-flex align-items-center gap-3">
+      <a href="/listings" class="text-dark text-decoration-none"
+        >All Listings</a
+      >
+      <a href="/listings/new" class="text-dark text-decoration-none"
+        >New Listing</a
+      >
+
+      <!-- User Menu -->
+      <div class="dropdown">
+        <button
+          class="btn border rounded-pill px-3 py-2 d-flex align-items-center gap-2"
+          data-bs-toggle="dropdown"
+        >
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-user-circle fs-5"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+          <li><a class="dropdown-item" href="/">Home</a></li>
+          <li><a class="dropdown-item" href="/profile">Profile</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item text-danger" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

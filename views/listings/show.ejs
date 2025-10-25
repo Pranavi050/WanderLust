@@ -1,0 +1,150 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <% if (error && error.length > 0) { %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= error[0] %>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %><% if (success && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= success[0] %>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <% } %>
+  <div class="show-container">
+    <% if(show.image){ %>
+    <img src="<%=show.image.url%>" alt="Listing Image" class="listing-image" />
+    <% } %>
+    <h3>Listing Details</h3>
+    <ul class="listing-details">
+      <li><strong>Owner:</strong> <%=show.owner[0].username%></li>
+      <li><strong>Title:</strong> <%=show.title%></li>
+      <li><strong>Description:</strong> <%=show.description%></li>
+      <li>
+        <strong>Price:</strong> &#x20B9;<%=show.price.toLocaleString("en-IN")%>
+        / night
+      </li>
+      <li><strong>Location:</strong> <%=show.location%></li>
+      <li><strong>Country:</strong> <%=show.country%></li>
+    </ul>
+    <% if ( currUser && show.owner && show.owner.length > 0 &&
+    currUser._id.toString() === show.owner[0]._id.toString() ) { %>
+    <div class="action-buttons">
+      <a href="/listings/<%= show._id %>/edit" class="btn">Edit</a>
+      <form action="/listings/<%= show._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="btn delete-btn">Delete</button>
+      </form>
+    </div>
+    <% } %>
+  </div>
+  <%if(currUser){%>
+  <div class="review-box">
+    <h2>Leave a Review</h2>
+    <form
+      action="/listings/<%=show._id%>/reviews"
+      method="POST"
+      class="needs-validation"
+      novalidate
+    >
+      <fieldset class="starability-slot mb-3">
+        <legend class="visually-hidden">Rating:</legend>
+
+        <input type="radio" id="rate5" name="review[rating]" value="5" />
+        <label for="rate5" title="Amazing">5 stars</label>
+
+        <input type="radio" id="rate4" name="review[rating]" value="4" />
+        <label for="rate4" title="Very good">4 stars</label>
+
+        <input type="radio" id="rate3" name="review[rating]" value="3" />
+        <label for="rate3" title="Average">3 stars</label>
+
+        <input type="radio" id="rate2" name="review[rating]" value="2" />
+        <label for="rate2" title="Not good">2 stars</label>
+
+        <input type="radio" id="rate1" name="review[rating]" value="1" />
+        <label for="rate1" title="Terrible">1 star</label>
+      </fieldset>
+
+      <label for="comments" class="form-label">Comments</label>
+      <textarea
+        class="form-control"
+        id="comments"
+        name="review[comment]"
+        placeholder="Write your feedback here..."
+        required
+      ></textarea>
+      <div class="invalid-feedback">Please enter a comment</div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <%}%>
+
+  <!-- Review Section -->
+
+  <div class="container my-4">
+    <h3 class="mb-4 text-center fw-bold text-primary">
+      <i class="bi bi-chat-left-text"></i> All Reviews
+    </h3>
+
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <% for (review of show.reviews) { %>
+      <div
+        class="card shadow-sm border-0 rounded-3 review-card d-flex flex-column"
+        style="width: 18rem"
+      >
+        <div class="card-body p-3 flex-grow-1">
+          <!-- User -->
+          <p class="card-text mb-2">
+            <strong>User:</strong>
+            <i class="bi bi-quote text-secondary"></i>
+            @<%= review.author.username %>
+          </p>
+
+          <!-- Comment -->
+          <p class="card-text mb-2">
+            <strong>Comment:</strong>
+            <i class="bi bi-quote text-secondary"></i>
+            <%= review.comment %>
+          </p>
+
+          <!-- Rating (Starability Read-only) -->
+
+          <p class="starability-result" data-rating="<%= review.rating %>">
+            Rated: 3 stars
+          </p>
+
+          <!-- Date -->
+          <p class="text-muted small mb-0">
+            <i class="bi bi-clock-history"></i>
+            <%= review.created_at.toLocaleString("en-GB", { year: "numeric",
+            month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit",
+            second: "2-digit" }) %>
+          </p>
+        </div>
+
+        <!-- Delete Button -->
+        <form
+          action="/listings/<%=show._id%>/reviews/<%=review._id%>?_method=DELETE"
+          method="POST"
+          class="text-start mb-3 ps-3"
+        >
+          <button type="submit" class="btn btn-danger btn-sm delete-btn">
+            <i class="bi bi-trash"></i> Delete
+          </button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>

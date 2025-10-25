@@ -1,0 +1,464 @@
+.navbar-brand {
+  font-family: "Poppins", sans-serif;
+}
+
+form input::placeholder {
+  font-size: 0.9rem;
+  color: #777;
+}
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header .btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: #ff385c;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.header .btn:hover {
+  background: #e63151;
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.listing-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.listing-card:hover {
+  transform: translateY(-5px);
+}
+
+.listing-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.listing-body {
+  padding: 1rem;
+}
+
+.listing-body h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.price {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #222;
+}
+.listing-link {
+  text-decoration: none;
+  color: black;
+}
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-container h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.listing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem; /* kam gap */
+}
+
+.listing-form input,
+.listing-form textarea {
+  padding: 0.6rem 0.8rem; /* kam padding */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-family: inherit;
+}
+
+.listing-form textarea {
+  resize: vertical;
+  min-height: 80px; /* pehle 120px tha, ab compact */
+  max-height: 150px;
+}
+
+.listing-form input:focus,
+.listing-form textarea:focus {
+  border-color: #ff385c;
+  outline: none;
+  box-shadow: 0 0 4px rgba(255, 56, 92, 0.3);
+}
+
+.listing-form .btn {
+  background: #ff385c; /* normal pinkish Airbnb color */
+  color: #fff;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.listing-form .btn:hover {
+  background: linear-gradient(135deg, #ff385c, #ff6388); /* premium gradient */
+  color: #fff; /* force white text */
+  box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+  transform: translateY(-2px);
+}
+/* ---------- SHOW LISTING CONTAINER ---------- */
+.show-container {
+  max-width: 480px; /* pehle 600px tha */
+  margin: 1.5rem auto; /* thoda kam top-bottom spacing */
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* thoda lighter shadow */
+}
+
+/* ---------- IMAGE ---------- */
+.listing-image {
+  width: 100%;
+  height: 140px; /* pehle 180px tha */
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- HEADER ---------- */
+.show-container h3 {
+  text-align: center;
+  font-size: 1.4rem; /* thoda chhota */
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+/* ---------- LIST DETAILS ---------- */
+.listing-details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
+.listing-details li {
+  font-size: 0.95rem; /* slightly smaller */
+  border-bottom: 1px solid #eee;
+  padding: 0.4rem 0;
+}
+
+.listing-details li strong {
+  color: #555;
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.action-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.8rem; /* thoda kam gap */
+}
+
+.action-buttons .btn {
+  background: #ff385c;
+  color: #fff;
+  padding: 0.6rem 0.9rem; /* slightly smaller */
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem; /* smaller font */
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.action-buttons .btn:hover {
+  background: linear-gradient(135deg, #ff385c, #ff6388);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(255, 56, 92, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ---------- DELETE BUTTON ---------- */
+.action-buttons .delete-btn {
+  background: #ff385c;
+}
+
+.action-buttons .delete-btn:hover {
+  background: linear-gradient(135deg, #e03131, #ff5c5c);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(224, 49, 49, 0.3);
+  transform: translateY(-2px);
+}
+.form-control {
+  height: 35px; /* default ~38-40px */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
+textarea.form-control {
+  height: 80px; /* adjust as needed */
+}
+
+.review-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 40px auto;
+  border: 1px solid #eee;
+}
+
+.review-box h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.review-box label {
+  display: block;
+  font-weight: 500;
+  margin: 12px 0 6px;
+  color: #444;
+}
+
+.review-box input[type="range"] {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.review-box textarea {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.review-box textarea:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.review-box button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.review-box button:hover {
+  background: linear-gradient(135deg, #0056d2, #003a9c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.review-box .rating-value {
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 10px;
+}
+.review-card {
+  width: 250px;
+  min-height: 160px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.delete-btn {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Signup card container */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-signup-box {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 40px 30px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #111;
+}
+
+.auth-field {
+  margin-bottom: 16px;
+}
+
+.auth-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #ff5a5f; /* Airbnb coral */
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background-color: #e14c53;
+}
+
+.auth-link-box {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.auth-link-box a.auth-link {
+  color: #ff5a5f;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 500px) {
+  .auth-signup-box {
+    padding: 30px 20px;
+  }
+}
+
+#hero {
+  min-height: 73vh;
+  background-size: cover;
+  background-position: center;
+}
+
+#hero h1 {
+  color: #333;
+  letter-spacing: 1.5px;
+}
+
+#hero p.lead {
+  color: #555;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.register-btn {
+  border-radius: 30px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  color: white !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+span {
+  color: #ff385c;
+}
+.uploadedImg img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
